@@ -1,5 +1,7 @@
 package Arrays;
 
+//https://www.youtube.com/watch?v=hJ_Uy2DzE08
+
 public class maxProductSubArray {
     public static void main(String[] args) {
         int nums[] = { 2, 10, 0, 9 };
@@ -18,6 +20,11 @@ public class maxProductSubArray {
             int temp = currMax;
             currMax = Math.max(Math.max(currMax * nums[i], currMin * nums[i]), nums[i]);
             currMin = Math.min(Math.min(temp * nums[i], currMin * nums[i]), nums[i]);
+
+            //max * nums[i] = if next element is +ve and the * with it will make our ans higher
+            //min *nums[i] = if the currmin is -ve and we current element is -ve and we multiply them, we get a higher number
+            //nums[i] = if both the max and min sum have been negative and we encounter an element which is greater than both of them
+        
 
             if (currMax > ans) {
                 ans = currMax;
