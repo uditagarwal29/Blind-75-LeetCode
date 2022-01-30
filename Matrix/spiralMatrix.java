@@ -5,49 +5,55 @@ import java.util.List;
 
 public class spiralMatrix {
     public static void main(String[] args) {
-        int[][] matrix = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 } };
+        int[][] matrix = { { 2, 5, 8 }, { 4, 0, -1 } };
         // We take 4 pointers
-        int r1 = 0; // --> topmost row
-        int c1 = matrix[0].length - 1;// --> leftmost column
-        int r2 = matrix.length - 1;// --> bottom row
-        int c2 = 0;// --> first column
+        int sr = 0; // --> topmost row
+        int ec = matrix[0].length - 1;// --> leftmost column
+        int er = matrix.length - 1;// --> bottom row
+        int sc = 0;// --> first column
         List<Integer> ans = new ArrayList<Integer>();
 
-        while (r1 <= r2 && c2 <= c1) {
+        while (sr <= er && sc <= ec) {
 
             // topmost row
-            for (int i = c2; i <= c1; i++) {
-                // System.out.print(matrix[r1][i] + " ");
-                ans.add(matrix[r1][i]);
+            for (int i = sc; i <= ec; i++) {
+                System.out.print(matrix[sr][i] + " ");
+                ans.add(matrix[sr][i]);
             }
-            r1++;
+            sr++;
+            System.out.println();
 
             // rightmost column
-            for (int i = r1; i <= r2; i++) {
-                // System.out.print(matrix[i][c1] + " ");
-                ans.add(matrix[i][c1]);
+            for (int i = sr; i <= er; i++) {
+                System.out.print(matrix[i][ec] + " ");
+                ans.add(matrix[i][ec]);
             }
-            c1--;
+            ec--;
+            System.out.println();
 
-            if (r2 > r1) { // this condition is to dont the last row again(reversed) in case of even
+            if (er > sr) { // this condition is to dont the last row again(reversed) in case of even
                            // columns
                 // bottom row
-                for (int i = c1; i >= c2; i--) {
-                    // System.out.print(matrix[r2][i] + " ");
-                    ans.add(matrix[r2][i]);
+                for (int i = ec; i >= sc; i--) {
+                    System.out.print(matrix[er][i] + " ");
+                    ans.add(matrix[er][i]);
                 }
-                r2--;
+                er--;
+                System.out.println();
+
             }
 
-            if (c1 > c2) {// this condition is to dont the last column again(reversed) in case of even
+            if (ec > sc) {// this condition is to dont the last column again(reversed) in case of even
                           // rows
                 // leftmost column
-                for (int i = r2; i >= r1; i--) {
-                    // System.err.print(matrix[i][c2] + " ");
-                    ans.add(matrix[i][c2]);
+                for (int i = er; i >= sr; i--) {
+                    System.err.print(matrix[i][sc] + " ");
+                    ans.add(matrix[i][sc]);
                 }
-                c2++;
+                sc++;
+                System.out.println();
             }
+            System.out.println("=--------------");
         }
         System.out.println(ans);
 
